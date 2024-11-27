@@ -50,15 +50,15 @@ void check_heating_water_pipe(int& status_switches, int temp_out) {
 
 void check_light_garden(int& status_switches, string time, string move) {
 	int time_h = stoi(time);
-	if ((time_h > 16 || time_h < 5) && !(status_switches & LIGHT_GARDEN) && move == "yes") {
+	if ((time_h > 16 && time_h < 5) && !(status_switches & LIGHT_GARDEN) && move == "yes") {
 		status_switches |= LIGHT_GARDEN;
 		cout << "Light in the garden is turned on\n";
 	}
-	else if ((time_h > 16 || time_h < 5) && (status_switches & LIGHT_GARDEN) && move == "no") {
+	else if ((time_h > 16 && time_h < 5) && (status_switches & LIGHT_GARDEN) && move == "no") {
 		status_switches &= ~(LIGHT_GARDEN);
 		cout << "Light in the garden is turned off\n";
 	}
-	else if ((time_h > 5 || time_h < 16) && (status_switches & LIGHT_GARDEN)) {
+	else if ((time_h > 5 && time_h < 16) && (status_switches & LIGHT_GARDEN)) {
 		status_switches &= ~(LIGHT_GARDEN);
 		cout << "Light in the garden is turned off\n";
 	}
@@ -67,19 +67,19 @@ void check_light_garden(int& status_switches, string time, string move) {
 void check_heating_room(int& status_switches, int temp_in) {
 	if (temp_in < 22 && !(status_switches & HEATING_ROOM)) {
 		status_switches |= HEATING_ROOM;
-		cout << "Heating in the room turned on";
+		cout << "Heating in the room turned on\n";
 	}
 	else if (temp_in >= 25 && (status_switches & HEATING_ROOM)) {
 		status_switches &= ~(HEATING_ROOM);
-		cout<< "Heating in the room turned off";
+		cout<< "Heating in the room turned off\n";
 	}
 	if (temp_in >= 30 && !(status_switches & CONDITIONER)) {
 		status_switches |= CONDITIONER;
-		cout << "Conditioner in the room turned on";
+		cout << "Conditioner in the room turned on\n";
 	}
 	else if (temp_in <= 25 && (status_switches & CONDITIONER)) {
 		status_switches &= ~(CONDITIONER);
-		cout << "Conditioner in the room turned off";
+		cout << "Conditioner in the room turned off\n";
 	}
 }
 
