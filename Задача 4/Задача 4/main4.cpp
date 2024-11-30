@@ -12,13 +12,13 @@ void play(string& music) {
 		string t;
 		t += music[i];
 		int accord = stoi(t);
-		accor += (accord == 1) ? n_do : 0;
-		accor += (accord == 2) ? n_re : 0;
-		accor += (accord == 3) ? n_mi : 0;
-		accor += (accord == 4) ? n_fa : 0;
-		accor += (accord == 5) ? n_sol : 0;
-		accor += (accord == 6) ? n_la : 0;
-		accor += (accord == 7) ? n_si : 0;
+		accor &= (accord == 1) ? n_do : 0;
+		accor &= (accord == 2) ? n_re : 0;
+		accor &= (accord == 3) ? n_mi : 0;
+		accor &= (accord == 4) ? n_fa : 0;
+		accor &= (accord == 5) ? n_sol : 0;
+		accor &= (accord == 6) ? n_la : 0;
+		accor &= (accord == 7) ? n_si : 0;
 	}
 	
 	if (accor & n_do) { cout << "do "; }
