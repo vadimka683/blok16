@@ -18,29 +18,8 @@ int main() {
 			cout << "Inposible speed\n";
 			continue;
 		}
-		sprintf_s(now_speed, "%1.f", now_speed_f + delta);
-		if (now_speed_f + delta < 10) {
-			now_speed[1] += ' ';
-		}
-		else if (now_speed_f + delta < 100) {
-			now_speed[2] += ' ';
-		}
-		else {
-			now_speed[3] += ' ';
-		}
-		bool flag = false;
-		int count = 0;
-		for (int i = 0; i < sizeof(now_speed); i++) {
-			if (now_speed[i] == ' ' && flag == false) {
-				flag = true;
-				continue;
-			}
-			if (flag) {
-				now_speed[i] = measurements[count];
-				count++;
-			}
-		}
-		cout << now_speed;
+		sprintf_s(now_speed, "%1.f %s", now_speed_f + delta, measurements);
+		cout << now_speed<<"\n";
 		
 	} while (stof(now_speed) > 0.01);
 }
