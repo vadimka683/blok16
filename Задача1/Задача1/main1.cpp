@@ -3,7 +3,6 @@
 
 using namespace std;
 
-
 int main() {
 	char now_speed[9] = "0 km/h";
 	do {
